@@ -31,13 +31,15 @@ function teksPilihan(){
     const totalPilihan = parseInt(document.getElementById('jumlahPilihan').value);
     const pilihTeks = document.getElementById('pilihTeks');
 
-    let hasilDipilih = '<h4>Teks Pilihan:</h4>';
-
+    let hasilDipilih = '<h4>Pilih Teks:</h4>';
+    hasilDipilih += '<select id="pilihanSelect">';
     
-    for (let i = 1; i <= totalPilihan; i++) {
+    for(let i = 1; i <= totalPilihan; i++){
         let pilihan = document.getElementById(`pilihan${i}`).value;
-        hasilDipilih += `<p>Pilihan ${i}: ${pilihan}</p>`;
+        hasilDipilih += `<option value="${pilihan}">${pilihan}</option>`;
     }
+    hasilDipilih += '</select>';
+    hasilDipilih += '<br><button onclick="pesan()">Tampilkan Pesan</button>';
 
     pilihTeks.innerHTML = hasilDipilih;
 }
@@ -55,6 +57,6 @@ function pesan(){
     }
 
     let pesanHalo = `Hallo, nama saya ${name}, saya mempunyai sejumlah ${totalPilihan} pilihan, yaitu ${pilihanTeks.join(', ')}, dan saya memilih ${pilihanTerpilih}.`;
-    
+
     alert(pesanHalo);
 }
