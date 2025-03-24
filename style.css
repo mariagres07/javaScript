@@ -1,0 +1,19 @@
+body{
+    background-color: rgb(191, 219, 230);
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+h1{
+    text-transform: capitalize;
+}
+
+h2{
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.form{
+    padding: 20px;
+}
+
