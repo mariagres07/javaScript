@@ -3,17 +3,17 @@ function hasilInputPilihan(){
     const totalPilihan =  parseInt(document.getElementById('jumlahPilihan').value);
     const masukkanTeks = document.getElementById('masukkanTeks');
 
-    if(isNaN(totalPilihan) || totalPilihan <= 0 ){
+    if(isNaN(totalPilihan) || totalPilihan <= 0 ){ //pilihan null atau tidak valid
         alert("Masukkan pilihan yang valid");
         return;
     }
 
-    if(name.trim() == ''){
+    if(name.trim() == ''){ //nama kosong
         alert("Masukkan nama");
         return;
     }
 
-    masukkanTeks.innerHTML = ''; 
+    masukkanTeks.innerHTML = ''; //reset form
     let hasilInput = '<h4>Masukkan Teks:</h4>';
 
     for(let i = 1; i <= totalPilihan; i++){
@@ -30,33 +30,32 @@ function hasilInputPilihan(){
 function teksPilihan(){
     const totalPilihan = parseInt(document.getElementById('jumlahPilihan').value);
     const pilihTeks = document.getElementById('pilihTeks');
-
     let hasilDipilih = '<h4>Pilih Teks:</h4>';
-    hasilDipilih += '<select id="pilihanSelect">';
     
     for(let i = 1; i <= totalPilihan; i++){
         let pilihan = document.getElementById(`pilihan${i}`).value;
-        hasilDipilih += `<option value="${pilihan}">${pilihan}</option>`;
+        hasilDipilih += `
+            <input type="radio" name="pilihanRadio" value="${pilihan}" id="radio${i}">
+            <label for="radio${i}">${pilihan}</label><br>        `;
     }
-    hasilDipilih += '</select>';
     hasilDipilih += '<br><button onclick="pesan()">Tampilkan Pesan</button>';
-
     pilihTeks.innerHTML = hasilDipilih;
 }
 
 function pesan(){
     const name = document.getElementById('nama').value;
     const totalPilihan =  parseInt(document.getElementById('jumlahPilihan').value);
-    const pesan = document.getElementById('pesan');
+    const pesanTeks = document.getElementById('pesanTeks');
+    const pilihanTerpilih = document.querySelector('input[name="pilihanRadio"]:checked');
 
-    let pilihanTeks = [];
-
-    for (let i = 1; i <= totalPilihan; i++) {
-        let pilihan = document.getElementById(`pilihan ${i}`).value;
-        pilihanTeks.push(pilihan);
+    //meminta user untuk memilih kembali jika belum memilih pilihan yang ada
+    if (!pilihanTerpilih) {
+        pesanTeks.innerHTML = `<p style="color:red;">Silakan pilih salah satu opsi!</p>`;
+        return;
     }
 
-    let pesanHalo = `Hallo, nama saya ${name}, saya mempunyai sejumlah ${totalPilihan} pilihan, yaitu ${pilihanTeks.join(', ')}, dan saya memilih ${pilihanTerpilih}.`;
+    let pesanHalo = `Hallo, nama saya <b>${name}</b>, saya mempunyai <b>${totalPilihan}</b> pilihan, dan saya memilih <b>${pilihanTerpilih.value}</b>.`;
 
-    alert(pesanHalo);
+    // Menampilkan pesan
+    pesanTeks.innerHTML = `<p>${pesanHalo}</p>`;
 }
