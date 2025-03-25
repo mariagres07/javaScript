@@ -1,7 +1,8 @@
 body{
     background-color: rgb(191, 219, 230);
-    margin-top: 50px;
-    margin-left: 50px;
+    margin-top: 90px;
+    text-align: center;
+    
 }
 
 h1{
@@ -17,3 +18,22 @@ h2{
     padding: 20px;
 }
 
+img{
+    width: 270px;
+}
+
+.runningText{
+    position: absolute;
+    top: 25px;
+    white-space: nowrap; 
+    animation: marquee 15s linear infinite;
+}
+
+@keyframes marquee {
+    from {
+      left: 100%;
+    }
+    to {
+      left: -100%;
+    }
+}
