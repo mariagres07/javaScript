@@ -1,0 +1,25 @@
+.jumbotron{ 
+    /* padding: 20px 30px; */
+    padding-top: 30px;
+    background-color:#fff7f9;
+
+}
+
+#about{
+    background-color: rgb(222, 176, 191);
+}
+
+#projects{
+    background-color:rgb(255, 241, 246);
+}
+
+
+
+#id{
+    background-color: #ffceea;
+}
+
+footer{
+    background-color: #9f6e8a;
+}
+
